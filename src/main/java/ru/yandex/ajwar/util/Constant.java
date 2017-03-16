@@ -1,4 +1,4 @@
-package ru.yandex.ajwar.Utils;
+package ru.yandex.ajwar.util;
 
 /**
  * Created by Ajwar on 16.03.2017.

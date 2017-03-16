@@ -13,7 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import ru.yandex.ajwar.MainApp;
-import static ru.yandex.ajwar.Utils.Constant.*;
+import static ru.yandex.ajwar.util.Constant.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
