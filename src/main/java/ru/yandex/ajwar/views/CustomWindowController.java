@@ -13,6 +13,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import ru.yandex.ajwar.MainApp;
+//import ru.yandex.ajwar.util.test.EffectUtilities;
+import ru.yandex.ajwar.util.test.UndecoratedHelper;
+
 import static ru.yandex.ajwar.util.Constant.*;
 
 import java.net.URL;
@@ -47,7 +50,10 @@ public class CustomWindowController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        listenerPrimaryStageMousePressedAndDragged();
+
+        //Platform.runLater(this::listenerPrimaryStageMousePressedAndDragged);
+        //Platform.runLater(()->EffectUtilities.makeDraggable(primaryStage,pane));
+        //Platform.runLater(()->UndecoratedHelper.makeDraggable(primaryStage,pane));
         pane.setStyle("-fx-background-color: #2d56cb;");
         heightImg=mainImg.getFitHeight();
         listenerImageViewAll();
@@ -92,7 +98,8 @@ public class CustomWindowController implements Initializable{
     }
 
     private void listenerPrimaryStageMousePressedAndDragged(){
-        pane.setOnMousePressed(event -> {
+        //UndecoratedHelper.addListenerDragAndPressNode(pane,primaryStage);
+/*        pane.setOnMousePressed(event -> {
             xOffset = event.getSceneX();
             yOffset = event.getSceneY();
         });
@@ -100,7 +107,7 @@ public class CustomWindowController implements Initializable{
             primaryStage.setX(event.getScreenX() - xOffset);
             primaryStage.setY(event.getScreenY() - yOffset);
             if (!primaryStage.isMaximized()) resizeImage();
-        });
+        });*/
         pane.setOnMouseClicked(event -> {
             if (event.getClickCount()==2 && event.getButton()== MouseButton.PRIMARY){
                 maximize();
@@ -173,5 +180,13 @@ public class CustomWindowController implements Initializable{
 
     public void setMinImg(ImageView minImg) {
         this.minImg = minImg;
+    }
+
+    public AnchorPane getPane() {
+        return pane;
+    }
+
+    public void setPane(AnchorPane pane) {
+        this.pane = pane;
     }
 }

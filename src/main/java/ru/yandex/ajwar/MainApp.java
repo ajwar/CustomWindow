@@ -1,6 +1,8 @@
 package ru.yandex.ajwar;
 
+
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -9,6 +11,8 @@ import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import ru.yandex.ajwar.borderless.BorderlessScene;
+import ru.yandex.ajwar.util.test.UndecoratedHelper;
 import ru.yandex.ajwar.views.CustomWindowController;
 
 import java.io.IOException;
@@ -25,6 +29,12 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage=primaryStage;
         initMainWindow();
+        BorderlessScene scene=new BorderlessScene(primaryStage,anchorPane);
+        primaryStage.setScene(scene);
+        scene.setMoveControl(mainWindowController.getPane());
+        ((AnchorPane)scene.getRoot()).setBackground(Background.EMPTY);
+        scene.setFill(Color.TRANSPARENT);
+        Platform.runLater(()->System.out.println(primaryStage.getOwner()));
         primaryStage.show();
     }
 
@@ -47,6 +57,7 @@ public class MainApp extends Application {
             mainWindowController=loader.getController();
             mainWindowController.setMainApp(this);
             mainWindowController.setPrimaryStage(primaryStage);
+            //UndecoratedHelper.addResizeListener(primaryStage);
         } catch (IOException e) {
             e.printStackTrace();
         }

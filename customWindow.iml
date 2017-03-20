@@ -13,6 +13,5 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="jacob-1" level="project" />
-    <orderEntry type="library" name="jacob" level="project" />
   </component>
 </module>
